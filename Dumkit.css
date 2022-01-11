@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+.keys{
+    display: grid;
+    grid-template-columns: repeat(5,100px);
+    grid-gap: 15px;
+    margin: 100px auto;
+    text-shadow: 0 0 5px black;
+    justify-content: center;
+}
+.key{
+    height: 100px;
+    width: 100px;
+    border: 2px solid black;
+    padding: 15px;
+    text-align: center;
+    transition: all 0.07s; 
+    background-color: wheat;
+    color: white;
+}
+span{
+    display: block;
+}
+kbd{
+    font-size: 40px;
+}
+.playing{
+     transform: scale(1.1); 
+     border-color: cornflowerblue; 
+    box-shadow: 0 0 10px #141414;
+}
+@media  only screen and (max-width:380px) {
+    .key{
+        height: 50px;
+        width: 50px;
+        padding: 10px;
+        font-size: 10px;
+    }
+    kbd{
+        font-size: 20px;
+    }
+    .keys{
+        grid-template-columns: repeat(5,50px);
+    }
+}

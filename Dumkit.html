@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dum Kit</title>
+    <link rel="stylesheet" href="Dumkit.css">
+</head>
+<body>
+    <div class="keys">
+        <div data-key="65" class="key">
+            <kbd>A</kbd>
+            <span>Boom</span>
+        </div>
+        <div data-key="66" class="key">
+            <kbd>B</kbd>
+            <span>Clap</span>
+        </div>
+        <div data-key="70" class="key">
+            <kbd>F</kbd>
+            <span>Hihat</span>
+        </div>
+        <div data-key="84" class="key">
+            <kbd>T</kbd>
+            <span>Kick</span>
+        </div>
+        <div data-key="75" class="key">
+            <kbd>k</kbd>
+            <span>Openhat</span>
+        </div>
+    </div>
+    <textarea name="" id="" cols="10" rows="5"></textarea>
+    <audio  data-key="65" src="Dumkit/boom.wav"></audio>
+    <audio  data-key="66" src="Dumkit/clap.wav"></audio>
+    <audio  data-key="70" src="Dumkit/hihat.wav"></audio>
+    <audio  data-key="84" src="Dumkit/kick.wav"></audio>
+    <audio  data-key="75" src="Dumkit/openhat.wav"></audio>
+    <script>
+        window.addEventListener('keydown',function(e){
+            const audio=document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key=document.querySelector(`div[data-key="${e.keyCode}"]`);
+            if(!audio) return ;
+            audio.currentTime=0;
+            audio.play();
+            key.classList.add('playing');
+function removeTransition(e){
+   if(e.propertyName!=='transform') return;
+   this.classList.remove('playing');
+}
+            const keys=document.querySelectorAll('.key');
+            keys.forEach(key=>key.addEventListener('transitionend',removeTransition))
+        })
+        
+    </script>
+</body>
+</html>
